@@ -156,14 +156,13 @@ def print_table(statistics, title):
 def main():
 
     load_dotenv()
-    SJ_SECRET_KEY = os.environ["SJ_SECRET_KEY"]
+    sj_secret_key = os.environ["SJ_SECRET_KEY"]
 
     hh_stats = get_statistics(load_all_vacancies_hh, predict_rub_salary_hh)
     print_table(hh_stats, "HeadHunter Moscow--------")
 
-    SJ_API_KEY = SJ_SECRET_KEY
     sj_stats = get_statistics(
-        lambda lang: load_all_vacancies_sj(lang, SJ_API_KEY),
+        lambda lang: load_all_vacancies_sj(lang, sj_secret_key),
         predict_rub_salary_sj
     )
     print_table(sj_stats, "SuperJob Moscow--------")
